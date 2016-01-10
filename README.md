@@ -1,2 +1,2 @@
-# GetStarted
+# Get Started
 Introduction to everything
