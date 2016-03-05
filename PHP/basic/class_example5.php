@@ -29,4 +29,8 @@ $new_person->last_name = 'Mertz';
 
 echo $person->full_name() ."<br />";
 echo $new_person->full_name()."<br />";
+
+$vars = get_class_vars('Person');
+foreach($vars as $var => $value){
+    echo "{$var}: {$value}<br />";
 ?>
