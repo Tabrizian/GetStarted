@@ -24,8 +24,6 @@ int open_port(void)
          */
         perror("open_port: Unable to open /dev/tnt0 - ");
     }
-    else
-        fcntl(fd, F_SETFL, 0);
 
     return (fd);
 }
@@ -33,7 +31,7 @@ int open_port(void)
 int main(){
     int fd = open_port();
 
-    int n = write(fd, "ATZ\r", 4);
+    int n = write(fd, "Hello From Serial!", 4);
     if (n < 0)
         fputs("write() of 4 bytes failed!\n", stderr);
     return 0;
