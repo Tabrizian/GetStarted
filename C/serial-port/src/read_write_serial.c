@@ -16,16 +16,25 @@ int open_port(void)
     int fd; /* File descriptor for the port */
 
 
-    fd = open("/dev/ttyf1", O_RDWR | O_NOCTTY | O_NDELAY);
+    fd = open("/dev/tnt0", O_RDWR | O_NOCTTY | O_NDELAY);
     if (fd == -1)
     {
         /*
          * Could not open the port.
          */
-        perror("open_port: Unable to open /dev/ttyf1 - ");
+        perror("open_port: Unable to open /dev/tnt0 - ");
     }
     else
         fcntl(fd, F_SETFL, 0);
 
     return (fd);
+}
+
+int main(){
+    int fd = open_port();
+
+    int n = write(fd, "ATZ\r", 4);
+    if (n < 0)
+        fputs("write() of 4 bytes failed!\n", stderr);
+    return 0;
 }
