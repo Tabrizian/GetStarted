@@ -11,6 +11,11 @@ class Car {
 
 class CompactCar extends Car {
 
+    var $doors = 2;
+
+    function wheelsdoors() {
+        return $this->wheelsdoors + $this->doors + 100;
+    }
 }
 
 $car1 = new Car();
@@ -24,5 +29,15 @@ echo "<br />";
 echo $car2->wheels . "<br />";
 echo $car2->wheels . "<br />";
 echo $car2->wheelsdoors() . "<br />";
+echo "<br />";
+
+echo "Car parent: ".get_parent_class('Car')."<br />";
+echo "CompactCar parent: ".get_parent_class('CompactCar')."<br />";
+echo "<br />";
+echo is_subclass_of('Car','Car') ? 'true' : 'false';
+echo "<br />";
+echo is_subclass_of('CompactCar','Car') ? 'true' : 'false';
+echo "<br />";
+echo is_subclass_of('Car','CompactCar') ? 'true' : 'false';
 echo "<br />";
 ?>
