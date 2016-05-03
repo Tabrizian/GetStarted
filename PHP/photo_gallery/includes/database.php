@@ -10,30 +10,32 @@ class MySQLDatabase {
     }
 
     public function open_connection() {
-        $this->$connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS);
+        $this->$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
         if(!$this->$connection) {
-            die("Database connection failed: " . mysql_error());
-        } else {
-            $db_select = mysql_select_db(DB_NAME, $this->connection);
-            if(!$db_select) {
-                die("Database selection failed " . mysql_error());
-            }
+            die("Database connection failed: " . mysqli_error($this->connection));
         }
     }
 
     public function query($sql) {
-        $result = mysql_error($sql, $this->connection);
-        if(!$result) {
-            die("Database query failed: ". mysql_error());
-        }
-
+        $result = mysqli_error($this->connection, $sql);
+        $this->confirm_query($result);
         return $result;
     }
 
     public function close_connection() {
         if(isset($this->connection)) {
-            mysql_close($this->connection);
+            mysqli_close($this->connection);
             unset($this->connection);
+        }
+    }
+
+    public function mysql_prep($value) {
+        return mysqli_real_escape_string($this->connection ,$value);
+    }
+
+    private function confirm_query($result) {
+        if(!$result) {
+            die("Database query failed: " . mysqli_error($this->connection));
         }
     }
 }
