@@ -4,6 +4,7 @@ require_once("config.php");
 class MySQLDatabase {
 
     private $connection;
+    public $last_query;
 
     function __construct() {
         $this->open_connection();
@@ -17,6 +18,7 @@ class MySQLDatabase {
     }
 
     public function query($sql) {
+        $this->last_query = $sql;
         $result = mysqli_query($this->connection, $sql);
         $this->confirm_query($result);
         return $result;
@@ -51,7 +53,7 @@ class MySQLDatabase {
 
     private function confirm_query($result) {
         if(!$result) {
-            die("Database query failed: " . mysqli_error($this->connection));
+            die("Database query failed: " . $this->last_query);
         }
     }
 }
