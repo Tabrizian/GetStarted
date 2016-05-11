@@ -16,6 +16,7 @@ type="text/css"/>
 </div>
 <div id="main">
 <h2>Menu</h2>
+</div>
 <div id="footer">Copyright <?php echo date("Y", time()); ?>,Iman Tabrizian</div>
     </body>
 </html>
