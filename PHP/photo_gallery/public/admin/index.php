@@ -7,7 +7,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 <html>
     <head>
          <title>Photo Gallery</title>
-         <link href="stylesheets/main.css" media="all" rel="stylesheet"
+         <link href="../stylesheets/main.css" media="all" rel="stylesheet"
 type="text/css"/>
     </head>
     <body>
@@ -16,6 +16,6 @@ type="text/css"/>
 </div>
 <div id="main">
 <h2>Menu</h2>
-<div id="footer">Copyright <?php echo data("Y", time()); ?>,Iman Tabrizian</div>
+<div id="footer">Copyright <?php echo date("Y", time()); ?>,Iman Tabrizian</div>
     </body>
 </html>

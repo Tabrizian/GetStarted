@@ -17,7 +17,8 @@ if(isset($_POST['submit'])) {
 
     if($found_user) {
         $session->login($found_user);
-        redirect_to("index.php");
+        echo "Win";
+    //    redirect_to("index.php");
     } else {
         $message = "Username/password combination incorrect.";
     }

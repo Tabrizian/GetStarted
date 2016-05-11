@@ -32,7 +32,7 @@ class User {
         $sql .= "LIMIT 1";
 
         $result_array = self::find_by_sql($sql);
-        return !empty($result_array) ? array_shift : false;
+        return !empty($result_array) ? array_shift($result_array) : false;
     }
 
     public static function find_by_sql($sql="") {
