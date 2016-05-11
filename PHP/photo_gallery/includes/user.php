@@ -57,11 +57,6 @@ class User {
 
     private static function instantiate($record) {
         $object = new self;
-       // $user-> id = $record['id'];
-       // $user-> username = $record['username'];
-       // $user-> password = $record['password'];
-       // $user-> first_name = $record['first_name'];
-       // $user-> last_name = $record['last_name'];
 
         foreach($record as $attribute=>$value) {
             if($object->has_attribute($attribute)) {
