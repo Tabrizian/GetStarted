@@ -23,9 +23,13 @@ function output_message($message="") {
     }
 }
 
+function include_layout_template($template="") {
+    include(SITE_ROOT.DS.'public'.DS.'layouts'.DS.$template);
+}
+
 function __autoload($class_name) {
     $class_name = strtolower($class_name);
-    $path = "../includes/{$class_name}.php";
+    $path = LIB_PATH.DS."{$class_name}.php";
     if(file_exists($path)) {
         require_once($path);
     } else {
