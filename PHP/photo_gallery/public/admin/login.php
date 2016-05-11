@@ -3,6 +3,7 @@ require_once("../../includes/database.php");
 require_once("../../includes/functions.php");
 require_once("../../includes/session.php");
 require_once("../../includes/user.php");
+$message = "";
 
 if($session->is_logged_in()) {
     redirect_to("index.php");
@@ -16,7 +17,7 @@ if(isset($_POST['submit'])) {
 
     if($found_user) {
         $session->login($found_user);
-        redirect_to($found_user);
+        redirect_to("index.php");
     } else {
         $message = "Username/password combination incorrect.";
     }
