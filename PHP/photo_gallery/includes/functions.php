@@ -38,13 +38,34 @@ function __autoload($class_name) {
 }
 
 function log_action($action, $message="") {
-    $filename = SITE_ROOT.DS.'logs/log.txt';
+    $filename = SITE_ROOT.DS.'logs'.DS.'log.txt';
     if($handle = fopen($filename, 'a')) {
-        $content = strftime('%Y/%m/%d %H:%M:%S')."|".$action.':'.$message ."\n";
-        fwrite($content, sizeof($content));
+        $content = strftime('%Y/%m/%d %H:%M:%S')." | ".$action.' : '
+            .$message ."\n";
+        fwrite($handle ,$content);
+        fclose($handle);
     } else {
         echo "Can't open file logs/log.txt";
     }
+}
+
+function log_read() {
+    $filename = SITE_ROOT.DS.'logs'.DS.'log.txt';
+    $contents = "";
+    if($handle = fopen($filename, 'r')) {
+        $contents .= fread($handle, filesize($filename));
+        fclose($handle);
+    } else {
+        echo "Can't open file logs".DS."log.txt";
+        return false;
+    }
+
+    return $contents;
+}
+
+function log_clear() {
+    $filename = SITE_ROOT.DS.'logs'.DS.'log.txt';
+    unlink($filename);
 }
 
 
