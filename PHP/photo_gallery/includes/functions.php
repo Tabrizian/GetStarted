@@ -37,5 +37,15 @@ function __autoload($class_name) {
     }
 }
 
+function log_action($action, $message="") {
+    $filename = SITE_ROOT.DS.'logs/log.txt';
+    if($handle = fopen($filename, 'a')) {
+        $content = strftime('%Y/%m/%d %H:%M:%S')."|".$action.':'.$message ."\n";
+        fwrite($content, sizeof($content));
+    } else {
+        echo "Can't open file logs/log.txt";
+    }
+}
+
 
 ?>
