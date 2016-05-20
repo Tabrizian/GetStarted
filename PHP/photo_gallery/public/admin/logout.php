@@ -1,5 +1,5 @@
 <?php
-require_once('../../includes/intialize.php');
+require_once('../../includes/initialize.php');
 $session->logout();
-redirec_to('login.php');
+redirect_to('login.php');
 ?>
