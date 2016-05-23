@@ -34,6 +34,41 @@ class User extends DatabaseObject{
         return !empty($result_array) ? array_shift($result_array) : false;
     }
 
+    public function create() {
+        global $database;
+        $sql  = "INSERT INTO users (";
+        $sql .= "username, password, first_name, last_name";
+        $sql .= ") VALUES ('";
+        $sql .= $database->escape_value($this->username)."', '";
+        $sql .= $database->escape_value($this->password)."', '";
+        $sql .= $database->escape_value($this->first_name)."', '";
+        $sql .= $database->escape_value($this->last_name)."')";
+        if($database->query($sql)) {
+            $this->id = $database->inserted_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function update() {
+        global $database;
+        $sql  = "UPDATE users SET ";
+        $sql .= "username='". $database->escape_value($this->username) ."', ";
+        $sql .= "password='". $database->escape_value($this->password) ."', ";
+        $sql .= "first_name='". $database->escape_value($this->first_name) ."', ";
+        $sql .= "last_name='". $database->escape_value($this->last_name) ."' ";
+        $sql .= " WHERE id=". $database->escape_value($this->id);
+        if($database->query($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete() {
+    }
+
 }
 
 ?>
