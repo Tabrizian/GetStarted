@@ -28,6 +28,10 @@ class DatabaseObject {
         return $object_array;
     }
 
+    public function save() {
+        // A new record won't have an id yet.
+        return isset($this->id) ? $this->update() : $this->create();
+    }
 
     private static function instantiate($record) {
         $class_name = get_called_class();

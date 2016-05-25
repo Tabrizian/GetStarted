@@ -36,7 +36,7 @@ class User extends DatabaseObject{
 
     public function create() {
         global $database;
-        $sql  = "INSERT INTO users (";
+        $sql  = "INSERT INTO ". self::$table_name . "(";
         $sql .= "username, password, first_name, last_name";
         $sql .= ") VALUES ('";
         $sql .= $database->escape_value($this->username)."', '";
@@ -51,6 +51,11 @@ class User extends DatabaseObject{
         }
     }
 
+    protected function attributes() {
+        // return an array of attrivute keys and their values
+        return get_object_vars($this);
+    }
+
     public function save() {
         // A new record won't have an id yet.
         return isset($this->id) ? $this->update() : $this->create();
@@ -58,7 +63,7 @@ class User extends DatabaseObject{
 
     public function update() {
         global $database;
-        $sql  = "UPDATE users SET ";
+        $sql  = "UPDATE ". self::$table_name . " SET ";
         $sql .= "username='". $database->escape_value($this->username) ."', ";
         $sql .= "password='". $database->escape_value($this->password) ."', ";
         $sql .= "first_name='". $database->escape_value($this->first_name) ."', ";
@@ -72,6 +77,16 @@ class User extends DatabaseObject{
     }
 
     public function delete() {
+        global $database;
+        $sql  = "DELETE FROM " . self::$table_name ;
+        $sql .= " WHERE id=". $database->escape_value($this->id);
+        $sql .= " LIMIT 1";
+
+        if($database->query($sql)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
