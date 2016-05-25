@@ -1,0 +1,7 @@
+CREATE TABLE photographs (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    size INT(11) NOT NULL,
+    caption VARCHAR(255) NOT NULL
+);
