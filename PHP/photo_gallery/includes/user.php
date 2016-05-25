@@ -36,24 +36,18 @@ class User extends DatabaseObject{
 
     public function create() {
         global $database;
+        $attributes = $this->sanitized_attributes();
         $sql  = "INSERT INTO ". self::$table_name . "(";
-        $sql .= "username, password, first_name, last_name";
+        $sql .= join(", ", array_keys($attributes));
         $sql .= ") VALUES ('";
-        $sql .= $database->escape_value($this->username)."', '";
-        $sql .= $database->escape_value($this->password)."', '";
-        $sql .= $database->escape_value($this->first_name)."', '";
-        $sql .= $database->escape_value($this->last_name)."')";
+        $sql .= join("', '", array_values($attributes));
+        $sql .= "')";
         if($database->query($sql)) {
             $this->id = $database->inserted_id();
             return true;
         } else {
             return false;
         }
-    }
-
-    protected function attributes() {
-        // return an array of attrivute keys and their values
-        return get_object_vars($this);
     }
 
     public function save() {
@@ -63,11 +57,13 @@ class User extends DatabaseObject{
 
     public function update() {
         global $database;
+        $attributes = $this->sanitized_attributes();
+        $attributes_pairs = array();
+        foreach($attributes as $key => $value) {
+            $attributes_pairs[] = "{$key}='{$value}'";
+        }
         $sql  = "UPDATE ". self::$table_name . " SET ";
-        $sql .= "username='". $database->escape_value($this->username) ."', ";
-        $sql .= "password='". $database->escape_value($this->password) ."', ";
-        $sql .= "first_name='". $database->escape_value($this->first_name) ."', ";
-        $sql .= "last_name='". $database->escape_value($this->last_name) ."' ";
+        $sql .= join(", ", $attributes_pairs);
         $sql .= " WHERE id=". $database->escape_value($this->id);
         if($database->query($sql)) {
             return true;
@@ -75,6 +71,7 @@ class User extends DatabaseObject{
             return false;
         }
     }
+
 
     public function delete() {
         global $database;

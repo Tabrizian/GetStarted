@@ -27,6 +27,15 @@ class DatabaseObject {
 
         return $object_array;
     }
+    protected function sanitized_attributes() {
+        global $database;
+        $clean_attributes = array();
+        foreach($this->attributes() as $key => $value) {
+            $clean_attributes[$key] = $database->escape_value($value);
+        }
+
+        return $clean_attributes;
+    }
 
     public function save() {
         // A new record won't have an id yet.
@@ -47,8 +56,12 @@ class DatabaseObject {
     }
 
     private function has_attribute($attribute) {
-        $object_vars = get_object_vars($this);
+        $object_vars = $this->attributes();
 
         return array_key_exists($attribute, $object_vars);
+    }
+
+    protected function attributes() {
+        return static::get_object_vars($this);
     }
 }
