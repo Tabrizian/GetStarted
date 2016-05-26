@@ -75,7 +75,7 @@ class DatabaseObject {
     public function create() {
         global $database;
         $attributes = $this->sanitized_attributes();
-        $sql  = "INSERT INTO ". self::$table_name . "(";
+        $sql  = "INSERT INTO ". static::$table_name . "(";
         $sql .= join(", ", array_keys($attributes));
         $sql .= ") VALUES ('";
         $sql .= join("', '", array_values($attributes));
