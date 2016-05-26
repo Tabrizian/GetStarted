@@ -44,8 +44,46 @@ class Photograph extends DatabaseObject {
     }
 
     public function save() {
-        parent::save();
 
+        if(isset($this->id)) {
+
+            $this->update();
+
+        } else {
+            if(!empty($this->errors))
+                return false;
+
+            if(strlen($this->caption) >= 255) {
+                $this->errors[] = "The caption can only be 255 characters.";
+                return false;
+            }
+
+            if(empty($this->filename) || empty($this->temp_path)) {
+                $this->errors[] = "The file location was not available.";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'public' . DS
+                . $this->upload_dir . DS . $this->filename;
+
+            if(file_exists($target_path)) {
+                $this->errors[] = "The file {$this->filename} already exists.";
+                return false;
+            }
+
+            if(move_uploaded_file($this->temp_path, $target_path)) {
+                if($this->create()) {
+                    unset($this->temp_path);
+                    return true;
+                }
+            } else {
+                $this->errors[] = "This file upload failed, possibly due to
+                    incorrect permissions on the upload dir.";
+                return false;
+            }
+
+
+        }
     }
 
 }
