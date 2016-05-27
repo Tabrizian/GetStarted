@@ -5,8 +5,7 @@ class Photograph extends DatabaseObject {
     protected static $db_fields = array('id', 'filename', 'type', 'caption', 'size');
 
     public $id;
-    public $firstname;
-    public $lastname;
+    public $filename;
     public $type;
     public $size;
     public $caption;
@@ -84,6 +83,10 @@ class Photograph extends DatabaseObject {
 
 
         }
+    }
+
+    public function image_path() {
+        return $this->upload_dir . DS . $this->filename;
     }
 
 }
