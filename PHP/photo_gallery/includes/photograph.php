@@ -85,6 +85,16 @@ class Photograph extends DatabaseObject {
         }
     }
 
+    public function destroy() {
+        if($this->delete()) {
+            $target_path = SITE_ROOT.DS.'public'.DS.$this->image_path();
+            return unlink($target_path) ? true : false;
+
+        } else {
+            return false;
+        }
+    }
+
     public function image_path() {
         return $this->upload_dir . DS . $this->filename;
     }

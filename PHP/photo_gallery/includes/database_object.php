@@ -11,7 +11,7 @@ class DatabaseObject {
     public static function find_by_id($id = 0) {
         global $database;
         $result_array = static::find_by_sql("SELECT * FROM ".static::$table_name." WHERE
-            id={$id} LIMIT 1");
+            id={$database->escape_value($id)} LIMIT 1");
         return !empty($result_array) ? array_shift($result_array) : false;
     }
 
@@ -95,7 +95,7 @@ class DatabaseObject {
         foreach($attributes as $key => $value) {
             $attributes_pairs[] = "{$key}='{$value}'";
         }
-        $sql  = "UPDATE ". self::$table_name . " SET ";
+        $sql  = "UPDATE ". static::$table_name . " SET ";
         $sql .= join(", ", $attributes_pairs);
         $sql .= " WHERE id=". $database->escape_value($this->id);
         if($database->query($sql)) {
@@ -107,7 +107,7 @@ class DatabaseObject {
 
     public function delete() {
         global $database;
-        $sql  = "DELETE FROM " . self::$table_name ;
+        $sql  = "DELETE FROM " . static::$table_name ;
         $sql .= " WHERE id=". $database->escape_value($this->id);
         $sql .= " LIMIT 1";
 

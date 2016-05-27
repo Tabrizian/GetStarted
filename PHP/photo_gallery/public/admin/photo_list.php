@@ -16,15 +16,16 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
             <th>Caption</th>
             <th>Size</th>
             <th>Type</th>
+            <th>nbsp;</th>
         </tr>
     <?php foreach($photos as $photo) :?>
 <tr>
-<td><img src="../<?php echo $photo->image_path(); ?>" width="100" /></td>
+    <td><img src="../<?php echo $photo->image_path(); ?>" width="100" /></td>
     <td><?php echo $photo->filename; ?></td>
     <td><?php echo $photo->caption; ?></td>
     <td><?php echo $photo->size_as_text(); ?></td>
     <td><?php echo $photo->type; ?></td>
-
+    <td><a href="photo_delete.php?id=<?php echo $photo->id; ?>">Delete</a></td>
 </tr>
 <?php endforeach; ?>
 </table>
