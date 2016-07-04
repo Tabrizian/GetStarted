@@ -1,1 +1,14 @@
 apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+task run(type: JavaExec, dependsOn: classes) {
+    main = 'org.gradle.example.simple.HelloWorld'
+    classpath  sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
