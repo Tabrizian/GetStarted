@@ -1,5 +1,5 @@
 @extends('layout')
 
 @section('content')
-    <h1>The welcome page goes here.</h1>
+    <h1>All Cards</h1>
 @stop
