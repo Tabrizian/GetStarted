@@ -8,14 +8,24 @@
 
             <ul class="list-group">
                 @foreach($card->notes as $note)
-                    <li class="list-group-item">{{ $note->body }}</li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ $note->body }}
+                            </div>
+                            <div class="col-md-offset-5 col-md-1">
+                                <a href="/notes/{{ $note->id }}/edit">Edit</a>
+                            </div>
+                        </div>
+                    </li>
                 @endforeach
             </ul>
 
             <hr>
 
             <h3>Add a new note</h3>
-            <form>
+            <form method="post" action="/cards/{{ $card->id }}/notes">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="form-group">
                     <textarea name="body" class="form-control"></textarea>
                 </div>
