@@ -9,8 +9,8 @@ import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
-        port(4500);
-        get("hello", ((request, response) -> "Hello World"));
+        port(35000);
+        get("/hello", ((request, response) -> "Hello World"));
 
     }
 
