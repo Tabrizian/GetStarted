@@ -13,7 +13,10 @@
                             <div class="col-md-6">
                                 {{ $note->body }}
                             </div>
-                            <div class="col-md-offset-5 col-md-1">
+                            <div class="col-md-offset-3 col-md-2">
+                                <a href="#">{{ $note->user->username }}</a>
+                            </div>
+                            <div class="col-md-1">
                                 <a href="/notes/{{ $note->id }}/edit">Edit</a>
                             </div>
                         </div>
