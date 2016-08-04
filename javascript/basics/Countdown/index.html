@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        #inputID {
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 20px;
+        }
+
+        #countdown {
+            margin: 0 auto;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            border: dotted thick black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Count down</h1>
+    <div class="form-group">
+        <input type="text" name="name" id="count" class="form-control" value="" title="" required="required">
+        <button type="submit" id="start" class="btn btn-primary">Start Countdown</button>
+    </div>
+
+    <p id="time">00:00</p>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
