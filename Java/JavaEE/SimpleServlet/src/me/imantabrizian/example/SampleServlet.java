@@ -16,6 +16,6 @@ public class SampleServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         System.out.println("Simple Servlet");
         PrintWriter pw = response.getWriter();
-        pw.println("This is <i>bold</i>");
+        pw.println("You searched for... " + request.getParameter("searchTerm"));
     }
 }
