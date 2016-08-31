@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handling</title>
+</head>
+<body>
+<div id="app" v-on:submit="handleIt">
+    <form>
+        <button type="submit">Submit Me!</button>
+    </form>
+</div>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        methods: {
+            handleIt: function () {
+                alert("Handled!");
+            }
+        }
+    });
+</script>
+</body>
+</html>

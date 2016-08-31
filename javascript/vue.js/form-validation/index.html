@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson</title>
+</head>
+<body>
+<div id="app">
+    <form>
+        <span v-show="!message">
+            You must enter a message!
+        </span>
+        <textarea v-model="message"></textarea>
+        <button type="submit" v-show="message">
+            Send Message
+        </button>
+        <pre>
+            {{ $data | json}}
+        </pre>
+    </form>
+</div>
+<script src="https://vuejs.org/js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data : {
+            message: ''
+        }
+    });
+</script>
+</body>
+</html>
