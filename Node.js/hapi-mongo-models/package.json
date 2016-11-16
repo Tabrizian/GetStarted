@@ -4,5 +4,8 @@
   "description": "Sample for working with hapi.js mongo models",
   "main": "index.js",
   "author": "Iman Tabrizian",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^15.2.0"
+  }
 }
