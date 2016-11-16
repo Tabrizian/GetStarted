@@ -1,0 +1,8 @@
+{
+  "name": "hapi-mongo-models",
+  "version": "1.0.0",
+  "description": "Sample for working with hapi.js mongo models",
+  "main": "index.js",
+  "author": "Iman Tabrizian",
+  "license": "MIT"
+}
