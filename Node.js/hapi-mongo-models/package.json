@@ -6,6 +6,11 @@
   "author": "Iman Tabrizian",
   "license": "MIT",
   "dependencies": {
-    "hapi": "^15.2.0"
+    "@watchup/hapi-mongoose": "^0.6.4",
+    "boom": "^4.2.0",
+    "hapi": "^15.2.0",
+    "joi": "^9.2.0",
+    "mongojs": "^2.4.0",
+    "node-uuid": "^1.4.7"
   }
 }
