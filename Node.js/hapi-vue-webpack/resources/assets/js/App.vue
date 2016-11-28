@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+    <div id="app">
     <h1>\{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -16,7 +15,7 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-  </div>
+</div>
 </template>
 
 <script>
@@ -32,12 +31,12 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+       font-family: 'Avenir', Helvetica, Arial, sans-serif;
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       text-align: center;
+       color: #2c3e50;
+       margin-top: 60px;
 }
 h1, h2 {
   font-weight: normal;

@@ -5,6 +5,7 @@ module.exports = {
     entry: './resources/assets/js/app.js',
     output: {
         path: path.resolve(__dirname, './public/js/'),
+        publicPath: path.resolve(__dirname, './public/js/'),
         filename: 'app.js'
     },
     module: {
@@ -25,6 +26,11 @@ module.exports = {
                 name: '[name].[ext]?[hash]'
             }
         }]
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.common.js'
+        }
     },
     devServer: {
         historyApiFallback: true,
