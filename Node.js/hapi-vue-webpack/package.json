@@ -1,0 +1,18 @@
+{
+  "name": "hapi-vue-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Iman Tabrizian",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^0.26.0",
+    "handlebars": "^4.0.6",
+    "hapi": "^15.2.0",
+    "inert": "^4.0.2",
+    "vision": "^4.1.0",
+    "vue": "^2.1.3",
+    "vue-loader": "^10.0.1",
+    "vue-template-compiler": "^2.1.3",
+    "webpack": "^1.13.3"
+  }
+}
