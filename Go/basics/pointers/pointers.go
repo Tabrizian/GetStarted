@@ -12,9 +12,8 @@ func main() {
 	}
 
 	var v int
-
 	v = 42
-	p = &v
+	p = dv
 
 	if p != nil {
 		fmt.Println("Value of p", *p)
